@@ -3,6 +3,8 @@ SELECT
 sales.orders_id,
 sales.date_date,
 sales.products_id,
+sales.revenue,
+sales.quantity,
 sales.quantity*table_products.purchase_price AS purchase_cost,
 sales.revenue-(sales.quantity*table_products.purchase_price) AS margin
 
