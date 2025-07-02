@@ -58,7 +58,160 @@ sources:
                description: prix d'acheminement en format float par orders_id
              - name: ship_cost
                description: prix de livraison en format float par orders_id
-             
-
-
-         
+         - name: facebook
+           identifier : raw_gz_facebook
+           description: campagne de pub sur facebook
+           columns:
+             - name: date_date
+               description: date de la campagne
+             - name: "(date_date || '-' || campaign_key)"#teste une concatenation de deux colonnes pour créer un PK qui n'existait pas en initial
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
+             - name: paid_source
+               description:  indique la source de la campagne de pub cad facebook à chaque ligne
+             - name: campaign_key
+               description: numero donné à la campagne facebook le mme sur chaque ligne
+             - name: camPGN_name
+               description: nom de la campagne facebook
+             - name: ads_cost
+               description: sous format string le cout de la camapgne
+             - name: impression
+               description: nombre d'impression ou nombre daffichage de page
+             - name: click
+               description: nombre de click sur les pages
+         - name: bing
+           identifier : raw_gz_criteo
+           description: campagne de pub sur bing
+           columns:
+             - name: date_date
+               description: date de la campagne
+             - name: "(date_date || '-' || campaign_key)"#teste une concatenation de deux colonnes pour créer un PK qui n'existait pas en initial
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
+             - name: paid_source
+               description:  indique la source de la campagne de pub cad bing à chaque ligne
+             - name: campaign_key
+               description: numero donné à la campagne bing le mme sur chaque ligne
+             - name: camPGN_name
+               description: nom de la campagne bing
+             - name: ads_cost
+               description: sous format string le cout de la camapgne bing
+             - name: impression
+               description: nombre d'impression ou nombre daffichage de page
+             - name: click
+               description: nombre de click sur les pages
+         - name: criteo
+           identifier : raw_gz_criteotrue
+           description: campagne de pub sur criteo
+           columns:
+             - name: date_date
+               description: date de la camapgne
+             - name: "(date_date || '-' || campaign_key)"#teste une concatenation de deux colonnes pour créer un PK qui n'existait pas en initial
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
+             - name: paid_source
+               description:  indique la source de la campagne de pub cad criteo à chaque ligne
+             - name: campaign_key
+               description: numero donné à la campagne criteo le mme sur chaque ligne
+             - name: camPGN_name
+               description: nom de la campagne criteo
+             - name: ads_cost
+               description: sous format string le cout de la camapgne
+             - name: impression
+               description: nombre d'impression ou nombre daffichage de page
+             - name: click
+               description: nombre de click sur les pages            
+         - name: adwords
+           identifier : raw_gz_adwords
+           description: campagne de pub sur adwords
+           columns:
+             - name: date_date
+               description: date de la camapgne
+             - name: "(date_date || '-' || campaign_key)"#teste une concatenation de deux colonnes pour créer un PK qui n'existait pas en initial
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
+             - name: paid_source
+               description:  indique la source de la campagne de pub cad adwords à chaque ligne
+             - name: campaign_key
+               description: numero donné à la campagne adwords le mme sur chaque ligne
+             - name: camPGN_name
+               description: nom de la campagne adwords
+             - name: ads_cost
+               description: sous format string le cout de la camapgne adwords
+             - name: impression
+               description: nombre d'impression ou nombre daffichage de page adwords
+             - name: click
+               description: nombre de click sur les pages         
+   - name: intermediate
+     tables:
+      - name: int_campaigns
+        description: jointure des l'ensemble des campgnes pub pour 4 annonceurs
+        columns:
+        - name: date_date
+          description: date de la camapgne
+        - name: paid_sources
+          description: nom de l'annonceur
+        - name: campaign_key
+          description: numero de la campagne
+        - name: ads_cost
+          description: cout de la campagne par jour en chiffre
+        - name: impression
+          description: nombre d'impression d'écran par campgne et par jour
+        - name: click
+          description: nombre de click genere par campagne et par jour
+      - name: int_campagne_jours
+        description: resumer des campagnes de pub par jour rassemblées par jour
+        columns:
+        - name: date_date
+          description: date de la camapgne
+        - name: ads_cost
+          description:  somme des couts de campagne par jour en chiffre
+        - name: impression
+          description: somme du nombre d'impression d'écran  par jour
+        - name: click
+          description: somme du nombre de click d'écran  par jour    
+   - name: mart
+   - name: finance
+     tables:
+       - name: finance_days
+         description : aggregation des indicateurs par jointure de la table campaigns_days et finance_days pour l'equipe finance
+         columns:
+            - name: date_date
+              description: date de réalisation de la campagne pub
+            - name: ads_margin
+              description:  soustraction de operational_margin et ads_cost contenu dans campagne_jours et finance_campaigne_days
+            - name: average_basket
+              description: panier moyen calcule sur la moyenne des revenues par jours et par orders
+            - name: operational_margin
+              description: marge opérationnel
+            - name: ads_cost
+              description: somme des couts ads
+            - name: ads_impression
+              description:  somme des impressions aggrégées par jour        
+            - name: click
+              description: somme des clicks agrégés par jour
+       - name: finance_campaigns_month
+         description : aggregation des indicateurs de la table campaigns_days et finance_days pour faire des aggregation par mois pour l'equipe finance
+         columns:
+            - name: date_date
+              description: date de réalisation transformer en mois
+            - name: ads_margin
+              description:  soustraction de operational_margin et ads_cost contenu dans campagne_jours et finance_campaigne_days
+            - name: average_basket
+              description: panier moyen calcule sur la moyenne des revenues par jours et par orders
+            - name: operational_margin
+              description: marge opérationnel
+            - name: ads_cost
+              description: somme des couts ads
+            - name: ads_impression
+              description:  somme des impressions aggrégées par mois        
+            - name: click
+              description: somme des clicks agrégés par mois
