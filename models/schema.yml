@@ -1,0 +1,64 @@
+version: 2
+sources:
+   - name: raw
+     schema: gz_raw_data #où se situe la table dans BQ
+     description: greenwez raw data source
+     tables:
+         - name: sales
+           identifier: raw_sales #Quel est le nom exacte de la table dans BQ
+           description: sales of greewneez / we have one row per product_id found in each order_id
+           loaded_at_field: "CAST(date_date AS TIMESTAMP)" # teste si la dernière commande a plus de 90 jours
+           freshness: 
+                warn_after:
+                 count: 90
+                 period: day  
+                error_after:
+                 count: 91
+                 period: day
+
+           columns:
+             - name: "(orders_id || '-' || pdt_id)"#teste une concatenation de deux colonnes pour créer un PK qui n'existait pas en initial
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
+             - name: date_date
+               description: date de la commande sous format YYYY-MM-DD
+             - name: orders_id
+               description: numero a 6chiffres correspondant à la commande
+             - name: products_id
+               description: numero de référence du produit au catalogue
+             - name: revenue
+               description: chiffre d'affaire par commande et par numero de produit
+             - name: quantity
+               description: nombre de produit ayant la référence produit par commande
+         - name: product
+           identifier: raw_product
+           description: purchase_price by products_id
+           columns:
+             - name: products_id
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
+             - name: purchase_price
+               description: prix du produit par référence produit     
+         - name: ship
+           identifier : raw_ship
+           description : shipping cost by orders_id
+           columns :
+             - name: orders_id
+               description: primary key of the table
+               tests:
+                - unique
+                - not_null
+             - name: shipping_fee
+               description: taxe de livraison par commande(orders_id) 
+             - name: logcost
+               description: prix d'acheminement en format float par orders_id
+             - name: ship_cost
+               description: prix de livraison en format float par orders_id
+             
+
+
+         
