@@ -1,12 +1,13 @@
 select
 operational.date_date,
 COUNT(operational.orders_id) AS Number_Transaction,
-SUM (revenue) AS Total_revenue,
-SUM(Operational_margin) AS Operational_margin,
-SUM(purchase_cost) AS total_purchase_cost,
-SUM(shipping_fee) AS total_shipping_fees,
-SUM(logcost) AS Total_log_cost,
-SUM(quantity) AS Total_quantity_sold
+ROUND(AVG(operational.revenue),2) AS panier_moyen,
+ROUND(SUM (operational.revenue),2) AS Total_revenue,
+ROUND(SUM(operational.operational_margin),2) AS Operational_margin,
+ROUND(SUM(operational.purchase_cost),2) AS total_purchase_cost,
+ROUND(SUM(operational.shipping_fees),2) AS total_shipping_fees,
+ROUND(SUM(operational.log_cost),2) AS Total_log_cost,
+ROUND(SUM(operational.quantity),2) AS Total_quantity_sold
 
 FROM {{ ref('int_orders_operational') }} as operational
 GROUP BY date_date
