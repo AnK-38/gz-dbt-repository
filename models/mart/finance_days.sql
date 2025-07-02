@@ -1,5 +1,4 @@
 
-{{config(materialized ='table')}}
 SELECT
 operational.date_date,
 COUNT(operational.orders_id) AS Number_Transaction,
