@@ -187,14 +187,31 @@ sources:
             - name: date_date
               description: date de réalisation de la campagne pub
             - name: ads_margin
-              description: 
+              description:  soustraction de operational_margin et ads_cost contenu dans campagne_jours et finance_campaigne_days
             - name: average_basket
-              description:
+              description: panier moyen calcule sur la moyenne des revenues par jours et par orders
             - name: operational_margin
-              description:
+              description: marge opérationnel
             - name: ads_cost
-              description:
+              description: somme des couts ads
             - name: ads_impression
-              description:          
-            - name:
-              description:
+              description:  somme des impressions aggrégées par jour        
+            - name: click
+              description: somme des clicks agrégés par jour
+       - name: finance_campaigns_month
+         description : aggregation des indicateurs de la table campaigns_days et finance_days pour faire des aggregation par mois pour l'equipe finance
+         columns:
+            - name: date_date
+              description: date de réalisation transformer en mois
+            - name: ads_margin
+              description:  soustraction de operational_margin et ads_cost contenu dans campagne_jours et finance_campaigne_days
+            - name: average_basket
+              description: panier moyen calcule sur la moyenne des revenues par jours et par orders
+            - name: operational_margin
+              description: marge opérationnel
+            - name: ads_cost
+              description: somme des couts ads
+            - name: ads_impression
+              description:  somme des impressions aggrégées par mois        
+            - name: click
+              description: somme des clicks agrégés par mois
