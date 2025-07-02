@@ -58,7 +58,90 @@ sources:
                description: prix d'acheminement en format float par orders_id
              - name: ship_cost
                description: prix de livraison en format float par orders_id
-             
+         - name: facebook
+           identifier : raw_gz_facebook
+           description: campagne de pub sur facebook
+           columns:
+             - name: date_date
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
+             - name: paid_source
+               description:  indique la source de la campagne de pub cad facebook à chaque ligne
+             - name: campaign_key
+               description: numero donné à la campagne facebook le mme sur chaque ligne
+             - name: camPGN_name
+               description: nom de la campagne facebook
+             - name: ads_cost
+               description: sous format string le cout de la camapgne
+             - name: impression
+               description: nombre d'impression ou nombre daffichage de page
+             - name: click
+               description: nombre de click sur les pages
+         - name: bing
+           identifier : raw_gz_criteo
+           description: campagne de pub sur bing
+           columns:
+             - name: date_date
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
+             - name: paid_source
+               description:  indique la source de la campagne de pub cad bing à chaque ligne
+             - name: campaign_key
+               description: numero donné à la campagne bing le mme sur chaque ligne
+             - name: camPGN_name
+               description: nom de la campagne bing
+             - name: ads_cost
+               description: sous format string le cout de la camapgne bing
+             - name: impression
+               description: nombre d'impression ou nombre daffichage de page
+             - name: click
+               description: nombre de click sur les pages
+         - name: criteo
+           identifier : raw_gz_criteotrue
+           description: campagne de pub sur criteo
+           columns:
+             - name: date_date
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
+             - name: paid_source
+               description:  indique la source de la campagne de pub cad criteo à chaque ligne
+             - name: campaign_key
+               description: numero donné à la campagne criteo le mme sur chaque ligne
+             - name: camPGN_name
+               description: nom de la campagne criteo
+             - name: ads_cost
+               description: sous format string le cout de la camapgne
+             - name: impression
+               description: nombre d'impression ou nombre daffichage de page
+             - name: click
+               description: nombre de click sur les pages            
+         - name: adwords
+           identifier : raw_gz_adwords
+           description: campagne de pub sur adwords
+           columns:
+             - name: date_date
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
+             - name: paid_source
+               description:  indique la source de la campagne de pub cad adwords à chaque ligne
+             - name: campaign_key
+               description: numero donné à la campagne adwords le mme sur chaque ligne
+             - name: camPGN_name
+               description: nom de la campagne adwords
+             - name: ads_cost
+               description: sous format string le cout de la camapgne adwords
+             - name: impression
+               description: nombre d'impression ou nombre daffichage de page adwords
+             - name: click
+               description: nombre de click sur les pages         
 
 
          
