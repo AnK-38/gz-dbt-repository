@@ -150,6 +150,33 @@ sources:
                description: nombre d'impression ou nombre daffichage de page adwords
              - name: click
                description: nombre de click sur les pages         
-        
+   - name: intermediate
+     tables:
+      - name: int_campaigns
+        description: jointure des l'ensemble des campgnes pub pour 4 annonceurs
+        columns:
+        - name: date_date
+          description: date de la camapgne
+        - name: paid_sources
+          description: nom de l'annonceur
+        - name: campaign_key
+          description: numero de la campagne
+        - name: ads_cost
+          description: cout de la campagne par jour en chiffre
+        - name: impression
+          description: nombre d'impression d'écran par campgne et par jour
+        - name: click
+          description: nombre de click genere par campagne et par jour
+      - name: int_campagne_jours
+        description: resumer des campagnes de pub par jour rassemblées par jour
+        columns:
+        - name: date_date
+          description: date de la camapgne
+        - name: ads_cost
+          description:  somme des couts de campagne par jour en chiffre
+        - name: impression
+          description: somme du nombre d'impression d'écran  par jour
+        - name: click
+          description: somme du nombre de click d'écran  par jour
 
          
