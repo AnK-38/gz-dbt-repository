@@ -64,6 +64,11 @@ sources:
            columns:
              - name: date_date
                description: date de la campagne
+             - name: "(date_date || '-' || campaign_key)"#teste une concatenation de deux colonnes pour créer un PK qui n'existait pas en initial
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
              - name: paid_source
                description:  indique la source de la campagne de pub cad facebook à chaque ligne
              - name: campaign_key
@@ -82,6 +87,11 @@ sources:
            columns:
              - name: date_date
                description: date de la campagne
+             - name: "(date_date || '-' || campaign_key)"#teste une concatenation de deux colonnes pour créer un PK qui n'existait pas en initial
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
              - name: paid_source
                description:  indique la source de la campagne de pub cad bing à chaque ligne
              - name: campaign_key
@@ -100,6 +110,11 @@ sources:
            columns:
              - name: date_date
                description: date de la camapgne
+             - name: "(date_date || '-' || campaign_key)"#teste une concatenation de deux colonnes pour créer un PK qui n'existait pas en initial
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
              - name: paid_source
                description:  indique la source de la campagne de pub cad criteo à chaque ligne
              - name: campaign_key
@@ -118,6 +133,11 @@ sources:
            columns:
              - name: date_date
                description: date de la camapgne
+             - name: "(date_date || '-' || campaign_key)"#teste une concatenation de deux colonnes pour créer un PK qui n'existait pas en initial
+               description: primary key of the table
+               tests:
+                 - unique
+                 - not_null
              - name: paid_source
                description:  indique la source de la campagne de pub cad adwords à chaque ligne
              - name: campaign_key
@@ -130,6 +150,6 @@ sources:
                description: nombre d'impression ou nombre daffichage de page adwords
              - name: click
                description: nombre de click sur les pages         
-
+        
 
          
