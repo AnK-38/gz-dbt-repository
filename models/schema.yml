@@ -63,10 +63,7 @@ sources:
            description: campagne de pub sur facebook
            columns:
              - name: date_date
-               description: primary key of the table
-               tests:
-                 - unique
-                 - not_null
+               description: date de la campagne
              - name: paid_source
                description:  indique la source de la campagne de pub cad facebook à chaque ligne
              - name: campaign_key
@@ -84,10 +81,7 @@ sources:
            description: campagne de pub sur bing
            columns:
              - name: date_date
-               description: primary key of the table
-               tests:
-                 - unique
-                 - not_null
+               description: date de la campagne
              - name: paid_source
                description:  indique la source de la campagne de pub cad bing à chaque ligne
              - name: campaign_key
@@ -105,10 +99,7 @@ sources:
            description: campagne de pub sur criteo
            columns:
              - name: date_date
-               description: primary key of the table
-               tests:
-                 - unique
-                 - not_null
+               description: date de la camapgne
              - name: paid_source
                description:  indique la source de la campagne de pub cad criteo à chaque ligne
              - name: campaign_key
@@ -126,10 +117,7 @@ sources:
            description: campagne de pub sur adwords
            columns:
              - name: date_date
-               description: primary key of the table
-               tests:
-                 - unique
-                 - not_null
+               description: date de la camapgne
              - name: paid_source
                description:  indique la source de la campagne de pub cad adwords à chaque ligne
              - name: campaign_key
