@@ -1,6 +1,6 @@
 SELECT
-finance_days.date_date  AS date_date,
-finance_days.Operational_margin-campagne_jours.ads_cost AS ads_margin,
+finance_days.date_date AS date_date,
+ROUND(finance_days.Operational_margin-campagne_jours.ads_cost,2) AS ads_margin,
 finance_days.panier_moyen AS average_basket,
 finance_days.Operational_margin AS operational_margin,
 campagne_jours.ads_cost AS ads_cost,
