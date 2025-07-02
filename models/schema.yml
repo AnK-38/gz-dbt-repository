@@ -177,6 +177,24 @@ sources:
         - name: impression
           description: somme du nombre d'impression d'écran  par jour
         - name: click
-          description: somme du nombre de click d'écran  par jour
-
-         
+          description: somme du nombre de click d'écran  par jour    
+   - name: mart
+   - name: finance
+     tables:
+       - name: finance_days
+         description : aggregation des indicateurs par jointure de la table campaigns_days et finance_days pour l'equipe finance
+         columns:
+            - name: date_date
+              description: date de réalisation de la campagne pub
+            - name: ads_margin
+              description: 
+            - name: average_basket
+              description:
+            - name: operational_margin
+              description:
+            - name: ads_cost
+              description:
+            - name: ads_impression
+              description:          
+            - name:
+              description:
