@@ -1,5 +1,6 @@
+
+{{config(materialized ='table')}}
 SELECT
-{{config(materialiezd=('finance_days'))}}
 operational.date_date,
 COUNT(operational.orders_id) AS Number_Transaction,
 ROUND(AVG(operational.revenue),2) AS panier_moyen,
